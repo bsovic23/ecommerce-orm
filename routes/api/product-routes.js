@@ -29,10 +29,26 @@ router.get('/', (req, res) => {
   });
 });
 
+
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  Product.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(data => {
+    if(!data) {
+      req.status(404).json({ message: 'There is no product with this ID'});
+      return;
+    } else res.json(data);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  })
 });
 
 // create new product
@@ -111,6 +127,21 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
+  Product.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(data => {
+    if (!data) {
+      res.status(404).json({ message: 'There is no proudct with that ID'});
+      return;
+    } res.json(data);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;
