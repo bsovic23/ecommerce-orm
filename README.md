@@ -2,7 +2,11 @@
 
 ## Project Description
 
-This is a backend api project for an eccomerce app. The API are hooked up to mock data including products, categories, product-tags.
+This is a backend api project for an eccomerce app. The API is hooked up to mock data including products, categories, product-tags.
+
+The application is allows the user to test the api endpoints for a variety of different queries, additions, edits, and deleting.
+
+The endpoints are setup and work to be added if a front-end design is developed.
 
 ## Tools Used In This Project
 
